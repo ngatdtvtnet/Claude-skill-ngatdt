@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Phân phối & Mẫu thiết kế - Viettel Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-deck" id="deck">
+
+        <div class="slide title-slide active">
+            <div class="slide-content">
+                <img src="logo-light.png" alt="Viettel Networks" class="course-logo">
+                <span class="module-badge">Chương 4</span>
+                <h1>Phân phối, Mẫu thiết kế<br>& Xử lý sự cố</h1>
+                <p class="subtitle">Chia sẻ Skill cho team, 5 Design Patterns phổ biến, và Checklist hoàn chỉnh trước khi go-live.</p>
+                <div class="meta">
+                    <span class="meta-item"><span class="icon">⏱</span> 20 phút</span>
+                    <span class="meta-item"><span class="icon">📋</span> Chương 3</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📦 Cách Phân phối Skill</h2>
+                <h3>Cá nhân</h3>
+                <ol class="steps">
+                    <li>Nén thư mục skill thành file <code>.zip</code></li>
+                    <li>Vào <strong>Claude.ai → Settings → Capabilities → Skills</strong></li>
+                    <li>Tải file ZIP lên → Claude tự nhận diện và kích hoạt</li>
+                </ol>
+                <h3>Tổ chức (Enterprise)</h3>
+                <ul>
+                    <li>Quản trị viên triển khai skill <strong>toàn workspace</strong></li>
+                    <li>Cập nhật tự động, quản lý tập trung</li>
+                    <li>API endpoint <code>/v1/skills</code> cho tích hợp lập trình</li>
+                </ul>
+                <div class="callout callout-viettel">
+                    <span class="callout-icon">🌐</span>
+                    <div>Skill là <strong>tiêu chuẩn mở</strong> — hoạt động trên Claude.ai, Claude Code và API. Tạo 1 lần, dùng mọi nơi.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🧩 5 Mẫu Thiết kế (Design Patterns)</h2>
+                <table>
+                    <thead><tr><th>#</th><th>Mẫu</th><th>Dùng khi</th><th>Kỹ thuật chính</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>1</strong></td><td>Điều phối tuần tự</td><td>Quy trình nhiều bước có thứ tự</td><td>Bước rõ ràng + rollback</td></tr>
+                        <tr><td><strong>2</strong></td><td>Phối hợp đa MCP</td><td>Trải rộng nhiều dịch vụ</td><td>Phân tách giai đoạn + xác thực</td></tr>
+                        <tr><td><strong>3</strong></td><td>Tinh chỉnh lặp lại</td><td>Chất lượng cần cải thiện qua vòng lặp</td><td>Tiêu chí chất lượng + script xác thực</td></tr>
+                        <tr><td><strong>4</strong></td><td>Lựa chọn theo ngữ cảnh</td><td>Cùng kết quả nhưng công cụ khác nhau</td><td>Tiêu chí quyết định + dự phòng</td></tr>
+                        <tr><td><strong>5</strong></td><td>Trí tuệ chuyên ngành</td><td>Cần kiến thức chuyên môn sâu</td><td>Nhúng domain knowledge + tuân thủ</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔧 Xử lý Sự cố Thường gặp</h2>
+                <div class="callout callout-warning">
+                    <span class="callout-icon">❌</span>
+                    <div>
+                        <strong>"Could not find SKILL.md"</strong><br>
+                        Đổi tên file thành đúng <code>SKILL.md</code> (phân biệt hoa thường).
+                    </div>
+                </div>
+                <div class="callout callout-warning">
+                    <span class="callout-icon">❌</span>
+                    <div>
+                        <strong>"Invalid frontmatter"</strong><br>
+                        Kiểm tra dấu phân cách <code>---</code> và dấu ngoặc kép trong YAML.
+                    </div>
+                </div>
+                <div class="callout callout-warning">
+                    <span class="callout-icon">❌</span>
+                    <div>
+                        <strong>"Invalid skill name"</strong><br>
+                        Tên có khoảng trắng hoặc viết hoa. Dùng <code>kebab-case</code>.
+                    </div>
+                </div>
+                <div class="callout callout-info">
+                    <span class="callout-icon">💡</span>
+                    <div>
+                        <strong>Skill không kích hoạt?</strong> Sửa lại trường <code>description</code> — thêm cụm từ mà người dùng thực tế sẽ nói.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Checklist Hoàn chỉnh</h2>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>📐 Trước khi bắt đầu</h4>
+                        <ul>
+                            <li>☐ Xác định 2-3 use case</li>
+                            <li>☐ Xác định công cụ cần thiết</li>
+                            <li>☐ Xem ví dụ skill có sẵn</li>
+                            <li>☐ Lên kế hoạch cấu trúc thư mục</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>🔨 Trong quá trình phát triển</h4>
+                        <ul>
+                            <li>☐ Thư mục đặt tên kebab-case</li>
+                            <li>☐ File SKILL.md đúng chính tả</li>
+                            <li>☐ YAML có dấu phân cách ---</li>
+                            <li>☐ Description có CÁI GÌ + KHI NÀO</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>🧪 Trước khi tải lên</h4>
+                        <ul>
+                            <li>☐ Test kích hoạt — tác vụ rõ ràng</li>
+                            <li>☐ Test kích hoạt — yêu cầu diễn đạt lại</li>
+                            <li>☐ Không kích hoạt chủ đề không liên quan</li>
+                            <li>☐ Test chức năng đạt</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>🚀 Sau khi tải lên</h4>
+                        <ul>
+                            <li>☐ Test trong hội thoại thực</li>
+                            <li>☐ Giám sát kích hoạt thiếu/thừa</li>
+                            <li>☐ Thu thập phản hồi</li>
+                            <li>☐ Cải tiến & cập nhật version</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content" style="text-align:center;">
+                <h2>🎓 Tổng kết Khóa học</h2>
+                <table>
+                    <thead><tr><th>Chương</th><th>Bạn đã học</th><th>Kỹ năng đạt được</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>0</strong></td><td>Skill là gì</td><td>Hiểu bức tranh tổng thể</td></tr>
+                        <tr><td><strong>1</strong></td><td>Cấu trúc & Nguyên tắc</td><td>SKILL.md, 3 nguyên tắc, MCP vs Skill</td></tr>
+                        <tr><td><strong>2</strong></td><td>Lập kế hoạch & Thiết kế</td><td>Use case, YAML frontmatter, tiêu chí thành công</td></tr>
+                        <tr><td><strong>3</strong></td><td>Kiểm thử & Cải tiến</td><td>3 loại test, so sánh hiệu suất</td></tr>
+                        <tr><td><strong>4</strong></td><td>Phân phối & Patterns</td><td>5 mẫu thiết kế, xử lý sự cố, checklist</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-viettel" style="text-align:left;">
+                    <span class="callout-icon">🏆</span>
+                    <div>Bạn đã sẵn sàng tạo Skill đầu tiên! Hãy bắt đầu với <strong>skill-creator</strong> trên Claude.ai hoặc Claude Code — chỉ cần nói: <em>"Giúp tôi xây dựng skill bằng skill-creator"</em></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-left"><a href="index.html" class="home-link">🏠 Mục lục</a></div>
+        <div class="nav-center"><span class="slide-counter"><span id="current">1</span> / <span id="total"></span></span></div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Trước</button>
+            <a href="index.html" class="nav-btn primary" id="nextBtn" onclick="return nextSlide(event)">Tiếp →</a>
+        </div>
+    </nav>
+    <script>
+        const slides=document.querySelectorAll('.slide');let current=0;const total=slides.length;document.getElementById('total').textContent=total;
+        function showSlide(n){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===n)s.classList.add('active');else if(i<n)s.classList.add('prev')});current=n;document.getElementById('current').textContent=n+1;document.getElementById('prevBtn').disabled=n===0;const nb=document.getElementById('nextBtn');if(n===total-1){nb.textContent='🏠 Về Mục lục';nb.href='index.html'}else{nb.textContent='Tiếp →';nb.removeAttribute('href')}document.getElementById('progress').style.width=((n+1)/total*100)+'%'}
+        function nextSlide(e){if(current<total-1){if(e)e.preventDefault();showSlide(current+1);return false}return true}
+        function prevSlide(){if(current>0)showSlide(current-1)}
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(e)}else if(e.key==='ArrowLeft'){e.preventDefault();prevSlide()}});showSlide(0);
+    </script>
+</body>
+</html>

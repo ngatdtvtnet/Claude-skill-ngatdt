@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1 Lập kế hoạch & Thiết kế - Viettel Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-deck" id="deck">
+
+        <div class="slide title-slide active">
+            <div class="slide-content">
+                <img src="logo-light.png" alt="Viettel Networks" class="course-logo">
+                <span class="module-badge">Chương 2</span>
+                <h1>Lập kế hoạch &<br>Thiết kế Skill</h1>
+                <p class="subtitle">Xác định Use Case, viết YAML frontmatter chuẩn, và thiết kế cấu trúc kỹ thuật.</p>
+                <div class="meta">
+                    <span class="meta-item"><span class="icon">⏱</span> 20 phút</span>
+                    <span class="meta-item"><span class="icon">📋</span> Chương 1</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🎯 Bước 1: Xác định Use Case</h2>
+                <p>Trước khi viết bất kỳ code nào, hãy trả lời 4 câu hỏi:</p>
+                <ol class="steps">
+                    <li><strong>Người dùng muốn đạt được gì?</strong> (Mục tiêu cuối cùng)</li>
+                    <li><strong>Quy trình nhiều bước nào cần thiết?</strong> (Luồng công việc)</li>
+                    <li><strong>Cần những công cụ gì?</strong> (Tích hợp sẵn hay MCP)</li>
+                    <li><strong>Kiến thức chuyên môn nào cần nhúng?</strong> (Best practices)</li>
+                </ol>
+                <div class="callout callout-viettel">
+                    <span class="callout-icon">💡</span>
+                    <div>Xác định <strong>2-3 use case cụ thể</strong> trước khi bắt tay vào code. Đây là bước quan trọng nhất!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📂 3 Danh mục Use Case Phổ biến</h2>
+                <table>
+                    <thead>
+                        <tr><th>Danh mục</th><th>Mô tả</th><th>Ví dụ</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. Tạo tài liệu</strong></td>
+                            <td>Đầu ra nhất quán, chất lượng cao</td>
+                            <td>Báo cáo, slide, code, thiết kế</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. Tự động hóa quy trình</strong></td>
+                            <td>Nhiều bước, phương pháp nhất quán</td>
+                            <td>Review code, xử lý email, deploy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. Nâng cao MCP</strong></td>
+                            <td>Hướng dẫn sử dụng công cụ bên ngoài</td>
+                            <td>Notion workflow, Slack bot</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📝 Bước 2: Viết YAML Frontmatter</h2>
+                <p>Đây là phần <strong>quan trọng nhất</strong> — quyết định Skill có được kích hoạt hay không.</p>
+                <h3>Các trường bắt buộc</h3>
+                <table>
+                    <thead><tr><th>Trường</th><th>Yêu cầu</th><th>Ví dụ</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>name</strong></td><td>kebab-case, không khoảng trắng</td><td><code>viettel-report</code></td></tr>
+                        <tr><td><strong>description</strong></td><td>Làm gì + Khi nào dùng (< 1024 ký tự)</td><td>"Tạo báo cáo. Dùng khi..."</td></tr>
+                    </tbody>
+                </table>
+                <h3>Các trường tùy chọn</h3>
+                <table>
+                    <thead><tr><th>Trường</th><th>Mục đích</th></tr></thead>
+                    <tbody>
+                        <tr><td><code>license</code></td><td>MIT, Apache-2.0...</td></tr>
+                        <tr><td><code>metadata</code></td><td>author, version, tags...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>✅ Viết Description Đúng Cách</h2>
+                <div class="compare-grid">
+                    <div class="compare-box bad">
+                        <h4>❌ Quá chung chung</h4>
+                        <pre><code>description: Giúp tạo tài liệu.</code></pre>
+                        <p>→ Claude không biết khi nào nên kích hoạt</p>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>✅ Cụ thể, có trigger</h4>
+                        <pre><code>description: Tạo báo cáo tuần/tháng
+  theo chuẩn Viettel Networks. Sử dụng
+  khi người dùng yêu cầu "tạo báo cáo",
+  "viết weekly report", hoặc "tổng hợp
+  KPI". Không dùng cho email.</code></pre>
+                    </div>
+                </div>
+                <div class="callout callout-warning">
+                    <span class="callout-icon">🚫</span>
+                    <div>
+                        <strong>Cấm trong frontmatter:</strong> Dấu ngoặc XML <code>&lt; &gt;</code>, tên chứa "claude" hoặc "anthropic" (đã bảo lưu).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📊 Tiêu chí Thành công</h2>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>📐 Chỉ số Định lượng</h4>
+                        <ul>
+                            <li>Skill kích hoạt >90% truy vấn liên quan</li>
+                            <li>Hoàn thành trong X lần gọi công cụ</li>
+                            <li>0 lần API thất bại mỗi quy trình</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>🎯 Chỉ số Định tính</h4>
+                        <ul>
+                            <li>Người dùng không cần prompt thêm</li>
+                            <li>Quy trình hoàn thành không cần sửa</li>
+                            <li>Kết quả nhất quán giữa các phiên</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="callout callout-info">
+                    <span class="callout-icon">👉</span>
+                    <div><strong>Tiếp theo:</strong> Chương 3 — Kiểm thử kích hoạt, chức năng và tối ưu Skill</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-left"><a href="index.html" class="home-link">🏠 Mục lục</a></div>
+        <div class="nav-center"><span class="slide-counter"><span id="current">1</span> / <span id="total"></span></span></div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Trước</button>
+            <a href="ch3-kiem-thu.html" class="nav-btn primary" id="nextBtn" onclick="return nextSlide(event)">Tiếp →</a>
+        </div>
+    </nav>
+    <script>
+        const slides=document.querySelectorAll('.slide');let current=0;const total=slides.length;document.getElementById('total').textContent=total;
+        function showSlide(n){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===n)s.classList.add('active');else if(i<n)s.classList.add('prev')});current=n;document.getElementById('current').textContent=n+1;document.getElementById('prevBtn').disabled=n===0;const nb=document.getElementById('nextBtn');if(n===total-1){nb.textContent='Bài tiếp →';nb.href='ch3-kiem-thu.html'}else{nb.textContent='Tiếp →';nb.removeAttribute('href')}document.getElementById('progress').style.width=((n+1)/total*100)+'%'}
+        function nextSlide(e){if(current<total-1){if(e)e.preventDefault();showSlide(current+1);return false}return true}
+        function prevSlide(){if(current>0)showSlide(current-1)}
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(e)}else if(e.key==='ArrowLeft'){e.preventDefault();prevSlide()}});showSlide(0);
+    </script>
+</body>
+</html>

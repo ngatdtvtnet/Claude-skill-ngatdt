@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Kiến thức Nền tảng - Viettel Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-deck" id="deck">
+
+        <div class="slide title-slide active">
+            <div class="slide-content">
+                <img src="logo-light.png" alt="Viettel Networks" class="course-logo">
+                <span class="module-badge">Chương 1</span>
+                <h1>Cấu trúc Skill &<br>Nguyên tắc Thiết kế</h1>
+                <p class="subtitle">Hiểu rõ "bên trong" một Skill — từ thư mục, file SKILL.md đến 3 nguyên tắc cốt lõi.</p>
+                <div class="meta">
+                    <span class="meta-item"><span class="icon">⏱</span> 15 phút</span>
+                    <span class="meta-item"><span class="icon">📋</span> Chương 0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📁 Cấu trúc thư mục Skill</h2>
+                <p>Một Skill về bản chất chỉ là một <strong>thư mục</strong> chứa các file:</p>
+                <pre><code>ten-skill-cua-ban/
+├── SKILL.md          ← Bắt buộc (file chính)
+├── scripts/          ← Tùy chọn (mã thực thi)
+├── references/       ← Tùy chọn (tài liệu tham khảo)
+└── assets/           ← Tùy chọn (mẫu, font, icon)</code></pre>
+                <div class="callout callout-warning">
+                    <span class="callout-icon">⚠️</span>
+                    <div>
+                        <strong>Quy tắc đặt tên:</strong><br>
+                        • Thư mục: dùng <code>kebab-case</code> → <code>viettel-report-gen</code> ✅<br>
+                        • File chính: phải đúng <code>SKILL.md</code> (phân biệt hoa thường)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📄 File SKILL.md — Trái tim của Skill</h2>
+                <p>SKILL.md gồm 2 phần chính:</p>
+                <h3>1. YAML Frontmatter (Phần khai báo)</h3>
+                <pre><code>---
+name: viettel-report-gen
+description: Tạo báo cáo theo chuẩn Viettel Networks.
+  Sử dụng khi người dùng yêu cầu "tạo báo cáo",
+  "viết tờ trình", hoặc "tổng hợp số liệu".
+---</code></pre>
+                <h3>2. Nội dung Markdown (Hướng dẫn chi tiết)</h3>
+                <p>Phần bên dưới frontmatter chứa toàn bộ hướng dẫn: quy trình, ví dụ, lưu ý, xử lý lỗi.</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🎯 3 Nguyên tắc Thiết kế Cốt lõi</h2>
+                <table>
+                    <thead>
+                        <tr><th>Nguyên tắc</th><th>Giải thích</th><th>Lợi ích</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Progressive Disclosure</strong></td>
+                            <td>Tải thông tin theo 3 cấp: YAML → SKILL.md → files đính kèm</td>
+                            <td>Tiết kiệm token, tải đúng lúc cần</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Composability</strong></td>
+                            <td>Skill hoạt động tốt cùng các Skill khác</td>
+                            <td>Không xung đột, kết hợp linh hoạt</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Portability</strong></td>
+                            <td>Chạy giống nhau trên Claude.ai, Claude Code, API</td>
+                            <td>Tạo 1 lần, dùng mọi nơi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🧠 Hệ thống 3 Cấp — Progressive Disclosure</h2>
+                <ol class="steps">
+                    <li><strong>Cấp 1 — YAML frontmatter:</strong> Luôn được tải vào system prompt. Claude dùng phần này để quyết định <em>"có nên dùng Skill này không?"</em></li>
+                    <li><strong>Cấp 2 — Nội dung SKILL.md:</strong> Chỉ tải khi Claude xác định Skill phù hợp. Chứa đầy đủ hướng dẫn, quy trình, ví dụ.</li>
+                    <li><strong>Cấp 3 — Tệp đính kèm:</strong> Scripts, references, assets — Claude chỉ đọc khi thực sự cần thiết.</li>
+                </ol>
+                <div class="callout callout-info">
+                    <span class="callout-icon">💡</span>
+                    <div>Cơ chế này giúp <strong>giảm 50-70% token</strong> so với việc nạp mọi thứ cùng lúc.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🍳 So sánh: MCP vs Skill</h2>
+                <p>Hãy tưởng tượng bạn đang nấu ăn:</p>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>🏪 MCP = Nhà bếp</h4>
+                        <p>Cung cấp công cụ, nguyên liệu, thiết bị.</p>
+                        <p><em>→ Claude <strong>có thể</strong> làm gì</em></p>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>📋 Skill = Công thức nấu</h4>
+                        <p>Hướng dẫn từng bước để tạo món ăn.</p>
+                        <p><em>→ Claude <strong>nên</strong> làm như thế nào</em></p>
+                    </div>
+                </div>
+                <table>
+                    <thead><tr><th>MCP (Kết nối)</th><th>Skill (Kiến thức)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Kết nối Claude với dịch vụ (Notion, Asana...)</td><td>Dạy Claude cách sử dụng dịch vụ hiệu quả</td></tr>
+                        <tr><td>Cung cấp truy cập dữ liệu thời gian thực</td><td>Nắm bắt quy trình & phương pháp tốt nhất</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Tóm tắt Chương 1</h2>
+                <ol class="steps">
+                    <li><strong>Skill = Thư mục</strong> chứa SKILL.md (bắt buộc) + scripts, references, assets (tùy chọn)</li>
+                    <li><strong>SKILL.md</strong> = YAML frontmatter (khai báo) + Markdown (hướng dẫn)</li>
+                    <li><strong>3 nguyên tắc:</strong> Progressive Disclosure, Composability, Portability</li>
+                    <li><strong>MCP + Skill</strong> = Bộ đôi hoàn hảo: công cụ + quy trình</li>
+                </ol>
+                <div class="callout callout-info">
+                    <span class="callout-icon">👉</span>
+                    <div><strong>Tiếp theo:</strong> Chương 2 — Lập kế hoạch Use Case, viết YAML frontmatter chuẩn</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-left"><a href="index.html" class="home-link">🏠 Mục lục</a></div>
+        <div class="nav-center"><span class="slide-counter"><span id="current">1</span> / <span id="total"></span></span></div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Trước</button>
+            <a href="ch2-thiet-ke.html" class="nav-btn primary" id="nextBtn" onclick="return nextSlide(event)">Tiếp →</a>
+        </div>
+    </nav>
+    <script>
+        const slides=document.querySelectorAll('.slide');let current=0;const total=slides.length;document.getElementById('total').textContent=total;
+        function showSlide(n){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===n)s.classList.add('active');else if(i<n)s.classList.add('prev')});current=n;document.getElementById('current').textContent=n+1;document.getElementById('prevBtn').disabled=n===0;const nb=document.getElementById('nextBtn');if(n===total-1){nb.textContent='Bài tiếp →';nb.href='ch2-thiet-ke.html'}else{nb.textContent='Tiếp →';nb.removeAttribute('href')}document.getElementById('progress').style.width=((n+1)/total*100)+'%'}
+        function nextSlide(e){if(current<total-1){if(e)e.preventDefault();showSlide(current+1);return false}return true}
+        function prevSlide(){if(current>0)showSlide(current-1)}
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(e)}else if(e.key==='ArrowLeft'){e.preventDefault();prevSlide()}});showSlide(0);
+    </script>
+</body>
+</html>

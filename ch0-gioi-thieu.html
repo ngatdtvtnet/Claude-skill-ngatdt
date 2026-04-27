@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0.1 Giới thiệu Skill - Viettel Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-deck" id="deck">
+
+        <div class="slide title-slide active">
+            <div class="slide-content">
+                <img src="logo-light.png" alt="Viettel Networks" class="course-logo">
+                <span class="module-badge">Chương 0</span>
+                <h1>Skill là gì &<br>Tại sao cần Skill?</h1>
+                <p class="subtitle">Dạy Claude một lần — hưởng lợi mãi mãi. Biến AI từ "trợ lý chung chung" thành chuyên gia của riêng bạn.</p>
+                <div class="meta">
+                    <span class="meta-item"><span class="icon">⏱</span> 10 phút</span>
+                    <span class="meta-item"><span class="icon">📋</span> Không yêu cầu</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🤔 Vấn đề: Lặp lại mỗi ngày</h2>
+                <p>Bạn có đang gặp những tình huống này?</p>
+                <ul>
+                    <li>Mỗi lần chat với Claude, phải <strong>giải thích lại</strong> quy trình công ty</li>
+                    <li>Cùng một tác vụ, nhưng <strong>kết quả không nhất quán</strong> giữa các lần</li>
+                    <li>Đồng nghiệp hỏi "prompt như nào?" — khó <strong>chuyển giao</strong></li>
+                    <li>Phải viết prompt dài dòng cho những việc <strong>lặp đi lặp lại</strong></li>
+                </ul>
+                <div class="callout callout-viettel">
+                    <span class="callout-icon">💡</span>
+                    <div><strong>Skill</strong> chính là giải pháp — dạy Claude một lần, dùng mãi mãi, chia sẻ cho cả team.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📦 Skill là gì?</h2>
+                <p>Skill là một <strong>tập hợp hướng dẫn</strong> được đóng gói dưới dạng thư mục đơn giản, giúp dạy Claude cách xử lý các tác vụ cụ thể.</p>
+                <div class="compare-grid">
+                    <div class="compare-box bad">
+                        <h4>❌ Không có Skill</h4>
+                        <ul>
+                            <li>Giải thích lại mỗi cuộc hội thoại</li>
+                            <li>Kết quả thay đổi tùy cách hỏi</li>
+                            <li>Khó chuyển giao cho đồng nghiệp</li>
+                            <li>Tốn token, tốn thời gian</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>✅ Có Skill</h4>
+                        <ul>
+                            <li>Claude tự biết khi nào áp dụng</li>
+                            <li>Kết quả nhất quán mọi lần</li>
+                            <li>Chia sẻ 1 file — cả team dùng được</li>
+                            <li>Tiết kiệm 50-70% token</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🎯 Skill mạnh nhất khi nào?</h2>
+                <table>
+                    <thead>
+                        <tr><th>Trường hợp sử dụng</th><th>Ví dụ cụ thể</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Tạo tài liệu</strong></td><td>Viết báo cáo, tờ trình theo đúng format công ty</td></tr>
+                        <tr><td><strong>Quy trình lặp lại</strong></td><td>Review code, tạo slide, xử lý email</td></tr>
+                        <tr><td><strong>Nghiên cứu</strong></td><td>Thu thập dữ liệu với phương pháp nhất quán</td></tr>
+                        <tr><td><strong>Phối hợp MCP</strong></td><td>Kết nối Notion + Slack + Google Drive tự động</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>👥 Hướng dẫn này dành cho ai?</h2>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>👨‍💻 Lập trình viên</h4>
+                        <p>Muốn Claude tuân theo quy trình code review, deploy, testing một cách nhất quán.</p>
+                    </div>
+                    <div class="compare-box good">
+                        <h4>🧑‍💼 Người dùng nâng cao</h4>
+                        <p>Muốn chuẩn hóa cách làm việc với AI — tạo template, workflow cho team.</p>
+                    </div>
+                </div>
+                <div class="callout callout-tip">
+                    <span class="callout-icon">⏰</span>
+                    <div>Dự kiến <strong>15-30 phút</strong> để xây dựng và kiểm thử Skill đầu tiên!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🗺️ Lộ trình Khóa học</h2>
+                <ol class="steps">
+                    <li><strong>Kiến thức Nền tảng</strong> — Cấu trúc Skill, nguyên tắc thiết kế, SKILL.md</li>
+                    <li><strong>Lập kế hoạch & Thiết kế</strong> — Use case, YAML frontmatter, cấu trúc thư mục</li>
+                    <li><strong>Kiểm thử & Cải tiến</strong> — 3 loại test, so sánh hiệu suất, tối ưu</li>
+                    <li><strong>Phân phối & Design Patterns</strong> — Chia sẻ, 5 mẫu thiết kế, xử lý sự cố</li>
+                </ol>
+                <div class="callout callout-info">
+                    <span class="callout-icon">👉</span>
+                    <div><strong>Bước tiếp theo:</strong> Chương 1 — Tìm hiểu cấu trúc bên trong của Skill</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-left"><a href="index.html" class="home-link">🏠 Mục lục</a></div>
+        <div class="nav-center"><span class="slide-counter"><span id="current">1</span> / <span id="total"></span></span></div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Trước</button>
+            <a href="ch1-nen-tang.html" class="nav-btn primary" id="nextBtn" onclick="return nextSlide(event)">Tiếp →</a>
+        </div>
+    </nav>
+    <script>
+        const slides=document.querySelectorAll('.slide');let current=0;const total=slides.length;document.getElementById('total').textContent=total;
+        function showSlide(n){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===n)s.classList.add('active');else if(i<n)s.classList.add('prev')});current=n;document.getElementById('current').textContent=n+1;document.getElementById('prevBtn').disabled=n===0;const nb=document.getElementById('nextBtn');if(n===total-1){nb.textContent='Bài tiếp →';nb.href='ch1-nen-tang.html'}else{nb.textContent='Tiếp →';nb.removeAttribute('href')}document.getElementById('progress').style.width=((n+1)/total*100)+'%'}
+        function nextSlide(e){if(current<total-1){if(e)e.preventDefault();showSlide(current+1);return false}return true}
+        function prevSlide(){if(current>0)showSlide(current-1)}
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(e)}else if(e.key==='ArrowLeft'){e.preventDefault();prevSlide()}});showSlide(0);
+    </script>
+</body>
+</html>

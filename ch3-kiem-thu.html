@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1 Kiểm thử & Cải tiến - Viettel Networks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-deck" id="deck">
+
+        <div class="slide title-slide active">
+            <div class="slide-content">
+                <img src="logo-light.png" alt="Viettel Networks" class="course-logo">
+                <span class="module-badge">Chương 3</span>
+                <h1>Kiểm thử &<br>Cải tiến Skill</h1>
+                <p class="subtitle">3 phương pháp test, so sánh hiệu suất "Có Skill vs Không", và vòng lặp cải tiến.</p>
+                <div class="meta">
+                    <span class="meta-item"><span class="icon">⏱</span> 15 phút</span>
+                    <span class="meta-item"><span class="icon">📋</span> Chương 2</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🧪 3 Cấp độ Kiểm thử</h2>
+                <table>
+                    <thead><tr><th>Cấp độ</th><th>Cách thực hiện</th><th>Phù hợp khi</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Thủ công</strong></td>
+                            <td>Chạy truy vấn trực tiếp trên Claude.ai</td>
+                            <td>Lặp nhanh, skill mới</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Có kịch bản</strong></td>
+                            <td>Tự động hóa test cases trong Claude Code</td>
+                            <td>Xác thực giữa các lần sửa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lập trình</strong></td>
+                            <td>Bộ đánh giá qua Skills API</td>
+                            <td>Kiểm thử quy mô lớn</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-tip">
+                    <span class="callout-icon">💡</span>
+                    <div><strong>Mẹo:</strong> Lặp trên <strong>1 tác vụ thách thức duy nhất</strong> cho đến khi thành công, rồi mới trích xuất thành skill.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>✅ Test 1: Kiểm thử Kích hoạt</h2>
+                <p><strong>Mục tiêu:</strong> Skill được tải đúng lúc, không tải khi không cần.</p>
+                <div class="compare-grid">
+                    <div class="compare-box good">
+                        <h4>✅ NÊN kích hoạt</h4>
+                        <ul>
+                            <li>Tác vụ rõ ràng: "Tạo báo cáo tuần"</li>
+                            <li>Diễn đạt lại: "Làm weekly report đi"</li>
+                            <li>Ngữ cảnh gián tiếp: "Sếp cần bản tóm tắt"</li>
+                        </ul>
+                    </div>
+                    <div class="compare-box bad">
+                        <h4>❌ KHÔNG NÊN kích hoạt</h4>
+                        <ul>
+                            <li>Chủ đề không liên quan</li>
+                            <li>Tác vụ thuộc skill khác</li>
+                            <li>Câu hỏi chung về AI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>⚙️ Test 2: Kiểm thử Chức năng</h2>
+                <p><strong>Mục tiêu:</strong> Skill tạo ra đầu ra đúng và xử lý được lỗi.</p>
+                <ol class="steps">
+                    <li><strong>Đầu ra hợp lệ:</strong> File được tạo đúng format, đúng nội dung</li>
+                    <li><strong>API thành công:</strong> Các lệnh gọi MCP không thất bại</li>
+                    <li><strong>Xử lý lỗi:</strong> Khi thiếu dữ liệu, skill hỏi lại thay vì crash</li>
+                    <li><strong>Trường hợp biên:</strong> File rỗng, dữ liệu thiếu, format lạ</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📊 Test 3: So sánh Hiệu suất</h2>
+                <p><strong>Mục tiêu:</strong> Chứng minh skill cải thiện kết quả so với không dùng skill.</p>
+                <table>
+                    <thead><tr><th>Chỉ số</th><th>Không có Skill</th><th>Có Skill</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Trao đổi qua lại</strong></td><td>15 lần</td><td>2 câu hỏi làm rõ</td></tr>
+                        <tr><td><strong>Gọi API thất bại</strong></td><td>3 lần</td><td>0 lần</td></tr>
+                        <tr><td><strong>Token tiêu thụ</strong></td><td>12.000</td><td>6.000</td></tr>
+                        <tr><td><strong>Chất lượng output</strong></td><td>Không nhất quán</td><td>Đồng đều, chuẩn mực</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 Vòng lặp Cải tiến</h2>
+                <table>
+                    <thead><tr><th>Triệu chứng</th><th>Nguyên nhân</th><th>Giải pháp</th></tr></thead>
+                    <tbody>
+                        <tr><td>Skill không tải</td><td>Description quá chung</td><td>Thêm trigger cụ thể</td></tr>
+                        <tr><td>Tải cho query sai</td><td>Kích hoạt quá rộng</td><td>Thêm trigger phủ định</td></tr>
+                        <tr><td>Kết quả không nhất quán</td><td>Hướng dẫn mơ hồ</td><td>Cụ thể hóa + thêm ví dụ</td></tr>
+                        <tr><td>SKILL.md quá dài</td><td>Quá nhiều chi tiết</td><td>Chuyển sang references/</td></tr>
+                    </tbody>
+                </table>
+                <div class="callout callout-info">
+                    <span class="callout-icon">👉</span>
+                    <div><strong>Tiếp theo:</strong> Chương 4 — Chia sẻ Skill, Design Patterns và Checklist hoàn chỉnh</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <nav class="nav-bar">
+        <div class="nav-left"><a href="index.html" class="home-link">🏠 Mục lục</a></div>
+        <div class="nav-center"><span class="slide-counter"><span id="current">1</span> / <span id="total"></span></span></div>
+        <div class="nav-right">
+            <button class="nav-btn" id="prevBtn" onclick="prevSlide()">← Trước</button>
+            <a href="ch4-phan-phoi.html" class="nav-btn primary" id="nextBtn" onclick="return nextSlide(event)">Tiếp →</a>
+        </div>
+    </nav>
+    <script>
+        const slides=document.querySelectorAll('.slide');let current=0;const total=slides.length;document.getElementById('total').textContent=total;
+        function showSlide(n){slides.forEach((s,i)=>{s.classList.remove('active','prev');if(i===n)s.classList.add('active');else if(i<n)s.classList.add('prev')});current=n;document.getElementById('current').textContent=n+1;document.getElementById('prevBtn').disabled=n===0;const nb=document.getElementById('nextBtn');if(n===total-1){nb.textContent='Bài tiếp →';nb.href='ch4-phan-phoi.html'}else{nb.textContent='Tiếp →';nb.removeAttribute('href')}document.getElementById('progress').style.width=((n+1)/total*100)+'%'}
+        function nextSlide(e){if(current<total-1){if(e)e.preventDefault();showSlide(current+1);return false}return true}
+        function prevSlide(){if(current>0)showSlide(current-1)}
+        document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();nextSlide(e)}else if(e.key==='ArrowLeft'){e.preventDefault();prevSlide()}});showSlide(0);
+    </script>
+</body>
+</html>
